@@ -3,13 +3,13 @@ import { addSite, getSites, getSiteById, deleteSite } from '../controllers/sites
 import { addSiteOpts, getSitesOpts, getSiteByIdOpts } from '../models/siteModel';
 
 
-
 export default function sitesRoutes(app: FastifyInstance, opts: Object, done: Function) {
   console.log('OPTS:', opts);
 
 
   // Add a new site
-  app.post('/', addSiteOpts, addSite);
+  // app.post('/', addSiteOpts, addSite);
+  app.post('/', addSite);
 
   // Get all sites
   app.get('/', getSitesOpts, getSites);
