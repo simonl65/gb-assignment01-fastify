@@ -1,10 +1,15 @@
 import { FastifyInstance } from 'fastify';
-import { getSites, getSiteById, deleteSite } from '../controllers/sitesController';
-import { getSitesOpts, getSiteByIdOpts } from '../models/siteModel';
+import { addSite, getSites, getSiteById, deleteSite } from '../controllers/sitesController';
+import { addSiteOpts, getSitesOpts, getSiteByIdOpts } from '../models/siteModel';
 
 
 
 export default function sitesRoutes(app: FastifyInstance, opts: Object, done: Function) {
+  console.log('OPTS:', opts);
+
+
+  // Add a new site
+  app.post('/', addSiteOpts, addSite);
 
   // Get all sites
   app.get('/', getSitesOpts, getSites);

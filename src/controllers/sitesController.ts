@@ -5,6 +5,18 @@ let sites = Sites;
 
 
 /**
+ * Create a nerew site
+ */
+const addSite = async (req: FastifyRequest, reply: FastifyReply) => {
+  // Get next id
+  const id = '99'; // TODO: Get next ID
+
+  // 
+  reply.code(501).send(req.params);
+};
+
+
+/**
  * Get all sites
  */
 const getSites = async (req: FastifyRequest, reply: FastifyReply) => {
@@ -46,6 +58,7 @@ const deleteSite = async (req: FastifyRequestWithParams, reply: FastifyReply) =>
 
 
 export {
+  addSite,
   getSites,
   getSiteById,
   deleteSite,
