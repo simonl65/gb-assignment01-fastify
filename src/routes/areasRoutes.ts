@@ -11,6 +11,8 @@ export default function areasRoutes(app: FastifyInstance, opts: Object, done: Fu
 
   // Get single area
   app.get('/:id', getAreaByIdOpts, getAreaById);
+
+  // Get all sites in specified area
   app.get('/:id/sites', { ...getAreaByIdOpts, ...getSitesOpts }, getSitesByAreaId);
 
   done();
