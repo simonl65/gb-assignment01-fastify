@@ -17,7 +17,7 @@ const getAreas = async (req, reply) => {
 const getAreaById = async (req, reply) => {
   const { id } = req.params;
   const area = areas.find((area) => {
-    if (parseInt(area.id) === +id) {
+    if (+(area.id) === +id) {
       return area;
     }
   });
