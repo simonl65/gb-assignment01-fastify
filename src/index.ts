@@ -1,17 +1,16 @@
-import fastify, { FastifyInstance } from 'fastify';
+import Fastify from 'fastify';
 import dotenv from 'dotenv';
 dotenv.config();
+import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 // import db from './database/db';
 
 import areasRoutes from './routes/areasRoutes';
 import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
-// import {siteRoutes} from "./routes/siteRoutes";
 
 /**
  * SETUP
  */
-// const app: FastifyInstance = Fastify({ logger: { level: 'debug' } }).withTypeProvider<TypeBoxTypeProvider>();
-const app = fastify({ logger: true }).withTypeProvider<TypeBoxTypeProvider>();
+const app = Fastify({ logger: true }).withTypeProvider<TypeBoxTypeProvider>();
 const PORT: number = parseInt(process.env.APP_PORT as string) || 3000;
 
 // app.register(db);
@@ -20,7 +19,6 @@ const PORT: number = parseInt(process.env.APP_PORT as string) || 3000;
  * ROUTES
  */
 app.log.debug('Registering routes...');
-// app.register(require('./routes/areasRoutes'), { prefix: '/api/v1/areas' });
 app.register(areasRoutes, { prefix: '/api/v1/areas' });
 // app.register(siteRoutes, { prefix: '/api/v1/sites' });
 app.log.debug('Routes registration complete');
@@ -28,11 +26,8 @@ app.log.debug('Routes registration complete');
 app.get("/", async () => {
   return {
     todo: {
-      "1": "Re-instate strict type checking",
-      "2": "/areas",
-      "3": "/sites",
-      "4": "Add database",
-      "5": "Validation"
+      "1": "Add database",
+      "2": "Validation"
     }
   };
 });

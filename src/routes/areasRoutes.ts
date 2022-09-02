@@ -37,7 +37,7 @@ const getAreaByIdOpts = {
 };
 
 export interface SLParams { id: string; }
-export type SLReq = FastifyRequest<{
+export type FastifyRequestWithParams = FastifyRequest<{
   Params: {
     id: 'string';
   };
