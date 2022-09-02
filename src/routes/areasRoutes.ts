@@ -1,4 +1,5 @@
-import { FastifyInstance } from 'fastify';
+import { Type } from '@sinclair/typebox';
+import { FastifyInstance, FastifyRequest } from 'fastify';
 import { getAreas, getAreaById } from '../controllers/areasController';
 // const { getAreas, getAreaById } = require('../controllers/areasController');
 
@@ -26,12 +27,21 @@ const getAreasOpts = {
 // Options for get single area
 const getAreaByIdOpts = {
   schema: {
+    params: Type.Object({
+      id: Type.String()
+    }),
     response: {
       200: Area
     },
   }
 };
 
+export interface SLParams { id: string; }
+export type SLReq = FastifyRequest<{
+  Params: {
+    id: 'string';
+  };
+}>;
 
 export default function areasRoutes(app: FastifyInstance, opts: Object, done: Function) {
 

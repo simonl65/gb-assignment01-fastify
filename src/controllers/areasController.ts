@@ -1,12 +1,14 @@
 import console from 'console';
+import { FastifyReply, FastifyRequest } from 'fastify';
 import Areas from '../data/Areas';
+import { SLParams, SLReq } from '../routes/areasRoutes';
 let areas = Areas;
 
 
 /**
  * Get all areas
  */
-const getAreas = async (req, reply) => {
+const getAreas = async (req: FastifyRequest, reply: FastifyReply) => {
   reply.send(areas);
 };
 
@@ -14,8 +16,8 @@ const getAreas = async (req, reply) => {
 /**
  * Get single area by its ID
  */
-const getAreaById = async (req, reply) => {
-  const { id } = req.params;
+const getAreaById = async (req: SLReq, reply: FastifyReply) => {
+  const id = req.params.id;
   const area = areas.find((area) => {
     if (+(area.id) === +id) {
       return area;

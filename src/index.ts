@@ -1,15 +1,17 @@
-import Fastify, { FastifyInstance } from 'fastify';
+import fastify, { FastifyInstance } from 'fastify';
 import dotenv from 'dotenv';
 dotenv.config();
 // import db from './database/db';
 
 import areasRoutes from './routes/areasRoutes';
+import { TypeBoxTypeProvider } from '@fastify/type-provider-typebox';
 // import {siteRoutes} from "./routes/siteRoutes";
 
 /**
  * SETUP
  */
-const app: FastifyInstance = Fastify({ logger: { level: 'debug' } });
+// const app: FastifyInstance = Fastify({ logger: { level: 'debug' } }).withTypeProvider<TypeBoxTypeProvider>();
+const app = fastify({ logger: true }).withTypeProvider<TypeBoxTypeProvider>();
 const PORT: number = parseInt(process.env.APP_PORT as string) || 3000;
 
 // app.register(db);
