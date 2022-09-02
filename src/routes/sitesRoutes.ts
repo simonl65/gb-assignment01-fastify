@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { getSites, getSiteById } from '../controllers/sitesController';
+import { getSites, getSiteById, deleteSite } from '../controllers/sitesController';
 import { getSitesOpts, getSiteByIdOpts } from '../models/siteModel';
 
 
@@ -11,6 +11,9 @@ export default function sitesRoutes(app: FastifyInstance, opts: Object, done: Fu
 
   // Get single site
   app.get('/:id', getSiteByIdOpts, getSiteById);
+
+  // Delete a site
+  app.delete('/:id', deleteSite);
 
   done();
 };

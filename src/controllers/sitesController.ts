@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import Sites from '../data/Sites';
-import { FastifyRequestWithParams } from '../typings/miscTypes';
+import { FastifyRequestWithParams, ISite } from '../typings/miscTypes';
 let sites = Sites;
 
 
@@ -32,7 +32,21 @@ const getSiteById = async (req: FastifyRequestWithParams, reply: FastifyReply) =
 };
 
 
+/**
+ * Delete the specified site
+ */
+const deleteSite = async (req: FastifyRequestWithParams, reply: FastifyReply) => {
+  const { id } = req.params;
+  const filteredSites = sites.filter((site) => {
+    return site.id !== +id;
+  });
+  sites = filteredSites;
+  reply.code(403).send({ todo: 'Implement delete site', id: id, filtered: sites });
+};
+
+
 export {
   getSites,
   getSiteById,
+  deleteSite,
 };
