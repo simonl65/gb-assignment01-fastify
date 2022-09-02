@@ -39,7 +39,7 @@ const getSiteById = async (req: FastifyRequestWithParams, reply: FastifyReply) =
     reply.send(site);
   }
   else {
-    reply.code(404).send({ statusCode: 404, message: 'Not Found' });
+    return reply.status(404).send(new Error('Site not found'));
   }
 };
 
