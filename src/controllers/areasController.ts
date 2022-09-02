@@ -1,7 +1,9 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
+import { FastifyRequestWithParams, ISite } from '../typings/miscTypes';
 import Areas from '../data/Areas';
-import { FastifyRequestWithParams } from '../typings/miscTypes';
 let areas = Areas;
+import Sites from '../data/Sites';
+let sites = Sites;
 
 
 /**
@@ -32,7 +34,31 @@ const getAreaById = async (req: FastifyRequestWithParams, reply: FastifyReply) =
 };
 
 
+/**
+ * Get sites in specified area
+ * NOTE: This is horribly inefficient because I'm not using a database ;-)
+ */
+const getSitesByAreaId = async (req: FastifyRequestWithParams, reply: FastifyReply) => {
+  const areaId = req.params.id;
+  let sitesInArea: ISite[] = [];
+
+  sites.map((site) => {
+    if (+(site.areaId) === +areaId) {
+      sitesInArea.push(site);
+    }
+  });
+
+  if (sitesInArea) {
+    reply.send(sitesInArea);
+  }
+  else {
+    reply.code(404).send({ statusCode: 404, message: 'Not Found' });
+  }
+};
+
+
 export {
   getAreas,
   getAreaById,
+  getSitesByAreaId,
 };
