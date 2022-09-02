@@ -5,15 +5,17 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
+    "tsn": "ts-node --respawn src/app.ts -w",
     "build": "npx tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "type": "commonjs",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@fastify/jwt": "^6.3.2",
+    "@fastify/type-provider-typebox": "^2.3.0",
+    "@sinclair/typebox": "^0.24.34",
     "dotenv": "^16.0.2",
     "fastify": "^4.5.3",
     "fastify-formbody": "^5.3.0",
