@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import Sites from '../data/Sites';
-import { FastifyRequestWithParams } from '../models/siteModel';
+import { FastifyRequestWithParams } from '../typings/miscTypes';
 let sites = Sites;
 
 

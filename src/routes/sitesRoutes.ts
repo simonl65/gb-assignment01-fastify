@@ -1,5 +1,4 @@
-import { Type } from '@sinclair/typebox';
-import { FastifyInstance, FastifyRequest } from 'fastify';
+import { FastifyInstance } from 'fastify';
 import { getSites, getSiteById } from '../controllers/sitesController';
 import { getSitesOpts, getSiteByIdOpts } from '../models/siteModel';
 

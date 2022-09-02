@@ -1,7 +1,6 @@
-import console from 'console';
 import { FastifyReply, FastifyRequest } from 'fastify';
 import Areas from '../data/Areas';
-import { SLParams, FastifyRequestWithParams } from '../routes/areasRoutes';
+import { FastifyRequestWithParams } from '../typings/miscTypes';
 let areas = Areas;
 
 
