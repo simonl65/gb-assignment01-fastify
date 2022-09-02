@@ -1,15 +1,12 @@
-import Fastify from 'fastify';
-const app = Fastify({ logger: true });
-// import Areas from '../data/Areas';
-// let areas = Areas;
-let areas = require('../data/Areas');
-console.log('=================AREAS', areas);
+import console from 'console';
+import Areas from '../data/Areas';
+let areas = Areas;
+
 
 /**
  * Get all areas
  */
 const getAreas = async (req, reply) => {
-  app.log.debug('=== areasController === getAreas');
   return reply.send(areas);
 };
 
@@ -18,11 +15,16 @@ const getAreas = async (req, reply) => {
  * Get single area by its ID
  */
 const getAreaById = async (req, reply) => {
-  app.log.debug('=== areasController === getAreaById');
   const { id } = req.params;
-  console.log('--- ID:', id);
-  // const area = areas.find((area) => area.id === id);
-  return reply.send(areas);
+  console.log('--- ID:', id); // TODO: SRL REMOVE
+  const area = areas.find((area) => {
+    console.log('-->', area);
+    if (parseInt(area.id) === +id) {
+      console.log('RETURNING:', area);
+      return area;
+    }
+  });
+  return reply.send(area);
 };
 
 

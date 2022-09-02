@@ -27,10 +27,7 @@ const getAreasOpts = {
 const getAreaByIdOpts = {
   schema: {
     response: {
-      200: {
-        type: 'array',
-        area: Area
-      },
+      200: Area
     },
   }
 };
