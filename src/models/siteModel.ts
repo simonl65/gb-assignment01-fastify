@@ -6,9 +6,7 @@ const Site = {
   type: 'object',
   properties: {
     id: { type: 'string' },
-    // areaId: { type: 'integer' },
     name: { type: 'string' },
-    // description: { type: 'text' },
   },
 };
 
@@ -19,7 +17,7 @@ const SiteAll = {
   properties: {
     areaId: { type: 'integer' },
     name: { type: 'string' },
-    description: { type: 'text' },
+    description: { type: 'string' },
     priceAdult: { type: ['number', 'null'] },
     priceChild: { type: ['number', 'null'] },
   }
@@ -41,12 +39,18 @@ const getSitesOpts = {
 
 const addSiteOpts = {
   schema: {
-    params: {
+    body: {
       type: 'object',
-      properties: SiteAll,
+      properties: {
+        areaId: { type: 'integer' },
+        name: { type: 'string' },
+        description: { type: 'string' },
+        priceAdult: { type: ['number', 'null'] },
+        priceChild: { type: ['number', 'null'] },
+      }
     },
     response: {
-      200: SiteAll,
+      200: { type: 'string', sites: Site },
     }
   }
 };

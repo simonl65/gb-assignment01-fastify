@@ -8,6 +8,17 @@ export type FastifyRequestWithParams = FastifyRequest<{
 }>;
 
 
+export type FastifyRequestWithSiteBody = FastifyRequest<{
+  Body: {
+    areaId: 'integer',
+    name: 'string',
+    description: 'string',
+    priceAdult: ['number', 'null'],
+    priceChild: ['number', 'null'],
+  };
+}>;
+
+
 export interface ISite {
   id?: number,
   areaId: number,

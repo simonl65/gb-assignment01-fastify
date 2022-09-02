@@ -1,18 +1,32 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import Sites from '../data/Sites';
-import { FastifyRequestWithParams, ISite } from '../typings/miscTypes';
+import { FastifyRequestWithParams, FastifyRequestWithSiteBody } from '../typings/miscTypes';
 let sites = Sites;
 
 
 /**
  * Create a nerew site
  */
-const addSite = async (req: FastifyRequest, reply: FastifyReply) => {
-  // Get next id
-  const id = '99'; // TODO: Get next ID
+const addSite = async (req: FastifyRequestWithSiteBody, reply: FastifyReply) => {
+  // Validate incoming data
+  // TODO: Validation
+  console.log('BODY:', typeof req.body.name);
 
-  // 
-  reply.code(501).send(req.params);
+  let { areaId, name, description, priceAdult, priceChild } = req.body;
+  let area_id = parseInt(areaId);
+  let price_Adult = 0.00;
+  let price_Child = 0.00;
+
+  // Get next id
+  const id = ++sites.length;
+
+  // Add data to sites array
+  try {
+    sites.push({ id, areaId: area_id, name, description, priceAdult: price_Adult, priceChild: price_Child });
+    reply.code(201).send('Site created OK');
+  } catch (err) {
+    return reply.status(500).send(new Error('Site was not added'));
+  }
 };
 
 
