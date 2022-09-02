@@ -7,6 +7,7 @@ export type FastifyRequestWithParams = FastifyRequest<{
   };
 }>;
 
+
 export interface ISite {
   id?: number,
   areaId: number,
