@@ -1,9 +1,17 @@
 import { FastifyRequest } from "fastify";
 
-export interface SLParams { id: string; }
 
 export type FastifyRequestWithParams = FastifyRequest<{
   Params: {
     id: 'string';
   };
 }>;
+
+export interface ISite {
+  id?: number,
+  areaId: number,
+  name: string,
+  description: string,
+  priceAdult?: number,
+  priceChild?: number,
+}
