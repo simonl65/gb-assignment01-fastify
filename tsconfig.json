@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "strict": false,
+    "strict": true,
     "target": "es5",
     "module": "commonjs",
     // "moduleResolution": "nodenext",
@@ -9,7 +9,7 @@
     ],
     "resolveJsonModule": true,
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "./build",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
