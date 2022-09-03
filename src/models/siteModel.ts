@@ -17,8 +17,8 @@ const SiteAll = {
     areaId: { type: 'integer' },
     name: { type: 'string' },
     description: { type: 'string' },
-    priceAdult: { type: ['number', 'null'] },
-    priceChild: { type: ['number', 'null'] },
+    priceAdult: { type: 'number' },
+    priceChild: { type: 'number' },
   }
 };
 
@@ -44,8 +44,8 @@ const addSiteOpts = {
         areaId: { type: 'integer' },
         name: { type: 'string' },
         description: { type: 'string' },
-        priceAdult: { type: ['number', 'null'] },
-        priceChild: { type: ['number', 'null'] },
+        priceAdult: { type: 'number' },
+        priceChild: { type: 'number' },
       }
     },
     response: {
