@@ -23,10 +23,10 @@ const addSite = async (req: FastifyRequestWithSiteBody, reply: FastifyReply) => 
   // Add data to sites array
   try {
     sites.push({ id, areaId: area_id, name, description, priceAdult: price_Adult, priceChild: price_Child });
-    reply.code(201).send('Site created OK');
   } catch (err) {
     return reply.status(500).send(new Error('Site was not added'));
   }
+  reply.code(201).send('Site created OK');
 };
 
 
@@ -67,7 +67,7 @@ const deleteSite = async (req: FastifyRequestWithParams, reply: FastifyReply) =>
     return site.id !== +id;
   });
   sites = filteredSites;
-  reply.code(403).send({ todo: 'Implement delete site', id: id, filtered: sites });
+  reply.code(403).send({ message: 'Site deleted OK' });
 };
 
 
