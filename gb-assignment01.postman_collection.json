@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "2ca33377-3c81-44a0-8853-c83586093491",
+		"name": "gb-assignment01",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Areas / Regions",
+			"item": [
+				{
+					"name": "List areas (regions)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/areas",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single area/region",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/areas/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"areas",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get sites by region",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/areas/1/sites",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"areas",
+								"1",
+								"sites"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sites / Attractions",
+			"item": [
+				{
+					"name": "Add a site",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"areaId\": 3,\r\n    \"name\": \"New site A\",\r\n    \"description\": \"Site A's description goes here\",\r\n    \"priceAdult\": 0.00,\r\n    \"priceChild\": 0.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/sites",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of sites",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/sites",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sites"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Single site by it's ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/sites/2",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sites",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete site",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/sites/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"sites",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
