@@ -1,0 +1,541 @@
+{
+	"version": 1,
+	"collections": [
+		{
+			"id": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+			"uid": "0-11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+			"name": "Fastify Prisma Tutorial",
+			"description": null,
+			"auth": null,
+			"events": null,
+			"variables": [],
+			"order": [],
+			"folders_order": [
+				"fa9dfbe1-bed8-4848-974a-a5c3df8a0d71",
+				"e46b6075-a0be-408a-ad02-540bc90888b7"
+			],
+			"protocolProfileBehavior": {},
+			"createdAt": "2022-09-01T19:45:49.467Z",
+			"folders": [
+				{
+					"id": "e46b6075-a0be-408a-ad02-540bc90888b7",
+					"uid": "0-e46b6075-a0be-408a-ad02-540bc90888b7",
+					"name": "Product",
+					"description": null,
+					"auth": null,
+					"events": null,
+					"collection": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"folder": null,
+					"order": [
+						"4ed9fc0e-d23b-4a05-a940-effe44161bc9",
+						"e3d7041c-1804-494d-8adb-306ccbc0736d"
+					],
+					"folders_order": [],
+					"owner": "0",
+					"protocolProfileBehavior": {},
+					"createdAt": "2022-09-01T19:45:49.469Z",
+					"collectionId": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"folderId": "e46b6075-a0be-408a-ad02-540bc90888b7"
+				},
+				{
+					"id": "fa9dfbe1-bed8-4848-974a-a5c3df8a0d71",
+					"uid": "0-fa9dfbe1-bed8-4848-974a-a5c3df8a0d71",
+					"name": "User",
+					"description": null,
+					"auth": null,
+					"events": null,
+					"collection": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"folder": null,
+					"order": [
+						"33fef49e-6119-4426-9410-86071437b19e",
+						"45b35b98-5429-472b-9475-c40ddd91c592",
+						"7d5880fb-ae1e-474a-b293-8d28c4bc7d61"
+					],
+					"folders_order": [],
+					"owner": "0",
+					"protocolProfileBehavior": {},
+					"createdAt": "2022-09-01T19:45:49.469Z",
+					"collectionId": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"folderId": "fa9dfbe1-bed8-4848-974a-a5c3df8a0d71"
+				}
+			],
+			"requests": [
+				{
+					"id": "33fef49e-6119-4426-9410-86071437b19e",
+					"uid": "0-33fef49e-6119-4426-9410-86071437b19e",
+					"name": "Create user",
+					"url": "{{host}}/api/users",
+					"description": null,
+					"data": [],
+					"dataOptions": {
+						"raw": {
+							"language": "json"
+						}
+					},
+					"dataMode": "raw",
+					"headerData": [],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"let firstName = pm.variables.replaceIn(\"{{$randomFirstName}}\")",
+									"let lastName = pm.variables.replaceIn(\"{{$randomFirstName}}\")",
+									"",
+									"pm.environment.set(\"name\", `${firstName} ${lastName}`)",
+									"",
+									"pm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'))",
+									"",
+									"pm.environment.set(\"email\", `${firstName.toLowerCase()}.${lastName.toLowerCase()}@example.com`)",
+									""
+								],
+								"type": "text/javascript",
+								"id": "d08f28db-aad0-41dd-9fc7-66235f895101"
+							}
+						}
+					],
+					"folder": "fa9dfbe1-bed8-4848-974a-a5c3df8a0d71",
+					"responses_order": [],
+					"preRequestScript": "let firstName = pm.variables.replaceIn(\"{{$randomFirstName}}\")\nlet lastName = pm.variables.replaceIn(\"{{$randomFirstName}}\")\n\npm.environment.set(\"name\", `${firstName} ${lastName}`)\n\npm.environment.set(\"password\", pm.variables.replaceIn('{{$randomPassword}}'))\n\npm.environment.set(\"email\", `${firstName.toLowerCase()}.${lastName.toLowerCase()}@example.com`)\n",
+					"tests": null,
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"rawModeData": "{\n    \"email\": \"{{email}}\",\n    \"name\": \"{{name}}\",\n    \"password\": \"{{password}}\"\n}",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "45b35b98-5429-472b-9475-c40ddd91c592",
+					"uid": "0-45b35b98-5429-472b-9475-c40ddd91c592",
+					"name": "Find users",
+					"url": "{{host}}/api/users",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{accessToken}}",
+								"type": "string"
+							}
+						]
+					},
+					"events": null,
+					"folder": "fa9dfbe1-bed8-4848-974a-a5c3df8a0d71",
+					"responses_order": [],
+					"currentHelper": "bearerAuth",
+					"helperAttributes": {
+						"id": "bearer",
+						"token": "{{accessToken}}"
+					},
+					"collectionId": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "4ed9fc0e-d23b-4a05-a940-effe44161bc9",
+					"uid": "0-4ed9fc0e-d23b-4a05-a940-effe44161bc9",
+					"name": "Create product",
+					"url": "{{host}}/api/products",
+					"description": null,
+					"data": [],
+					"dataOptions": {
+						"raw": {
+							"language": "json"
+						}
+					},
+					"dataMode": "raw",
+					"headerData": [],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{accessToken}}",
+								"type": "string"
+							}
+						]
+					},
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"id": "1b7d17e9-6491-40b1-98e0-f696f3e89fc1"
+							}
+						}
+					],
+					"folder": "e46b6075-a0be-408a-ad02-540bc90888b7",
+					"responses_order": [],
+					"preRequestScript": null,
+					"tests": null,
+					"currentHelper": "bearerAuth",
+					"helperAttributes": {
+						"id": "bearer",
+						"token": "{{accessToken}}"
+					},
+					"collectionId": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"rawModeData": "{\n    \"title\": \"A cool product\",\n    \"price\": 14.99,\n    \"content\": \"This is actually an sick product\"\n}",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "7d5880fb-ae1e-474a-b293-8d28c4bc7d61",
+					"uid": "0-7d5880fb-ae1e-474a-b293-8d28c4bc7d61",
+					"name": "Login",
+					"url": "{{host}}/api/users/login",
+					"description": null,
+					"data": [],
+					"dataOptions": {
+						"raw": {
+							"language": "json"
+						}
+					},
+					"dataMode": "raw",
+					"headerData": [],
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken)"
+								],
+								"type": "text/javascript",
+								"id": "4a95a269-94e8-491f-8315-63f8783c3200"
+							}
+						}
+					],
+					"folder": "fa9dfbe1-bed8-4848-974a-a5c3df8a0d71",
+					"responses_order": [],
+					"preRequestScript": null,
+					"tests": "var jsonData = JSON.parse(responseBody);\npostman.setEnvironmentVariable(\"accessToken\", jsonData.accessToken)",
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"rawModeData": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+					"headers": "",
+					"pathVariables": {}
+				},
+				{
+					"id": "e3d7041c-1804-494d-8adb-306ccbc0736d",
+					"uid": "0-e3d7041c-1804-494d-8adb-306ccbc0736d",
+					"name": "Get products",
+					"url": "{{host}}/api/products",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": [],
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "e46b6075-a0be-408a-ad02-540bc90888b7",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "11eb20de-bfa4-4324-a0e3-3368e33ec5c7",
+					"headers": "",
+					"pathVariables": {}
+				}
+			]
+		},
+		{
+			"id": "2ca33377-3c81-44a0-8853-c83586093491",
+			"uid": "0-2ca33377-3c81-44a0-8853-c83586093491",
+			"name": "gb-assignment01",
+			"description": null,
+			"auth": null,
+			"events": null,
+			"variables": [],
+			"order": [],
+			"folders_order": [
+				"0406fd33-4124-405d-a17a-e1c1473f781c",
+				"6bbf2c68-b431-4308-95fa-953bd3bc8c78"
+			],
+			"protocolProfileBehavior": {},
+			"createdAt": "2022-09-01T23:59:19.934Z",
+			"folders": [
+				{
+					"id": "0406fd33-4124-405d-a17a-e1c1473f781c",
+					"uid": "0-0406fd33-4124-405d-a17a-e1c1473f781c",
+					"name": "Areas / Regions",
+					"description": null,
+					"auth": null,
+					"events": null,
+					"collection": "2ca33377-3c81-44a0-8853-c83586093491",
+					"folder": null,
+					"order": [
+						"798922e5-f93a-4116-a781-16cefaa38e26",
+						"08f3d241-acc1-41ef-b861-b63c1cf939b2",
+						"ad8b99a4-5308-4c64-b571-8c0c0226d020"
+					],
+					"folders_order": [],
+					"owner": "0",
+					"protocolProfileBehavior": {},
+					"createdAt": "2022-09-02T12:43:48.366Z",
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"folderId": "0406fd33-4124-405d-a17a-e1c1473f781c"
+				},
+				{
+					"id": "6bbf2c68-b431-4308-95fa-953bd3bc8c78",
+					"uid": "0-6bbf2c68-b431-4308-95fa-953bd3bc8c78",
+					"name": "Sites / Attractions",
+					"description": null,
+					"auth": null,
+					"events": null,
+					"collection": "2ca33377-3c81-44a0-8853-c83586093491",
+					"folder": null,
+					"order": [
+						"568f13f8-2edd-4761-b76b-bc1e966e676d",
+						"6363756f-e3e1-4e07-a8db-81e32cafaf0a",
+						"1c7fc94a-6876-4f76-bd6e-872faf68e809",
+						"42aff421-797b-4adb-bf86-e15c5339ba75"
+					],
+					"folders_order": [],
+					"owner": "0",
+					"protocolProfileBehavior": {},
+					"createdAt": "2022-09-02T12:44:16.576Z",
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"folderId": "6bbf2c68-b431-4308-95fa-953bd3bc8c78"
+				}
+			],
+			"requests": [
+				{
+					"id": "08f3d241-acc1-41ef-b861-b63c1cf939b2",
+					"uid": "0-08f3d241-acc1-41ef-b861-b63c1cf939b2",
+					"name": "Single area/region",
+					"url": "{{host}}/areas/1",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "0406fd33-4124-405d-a17a-e1c1473f781c",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"pathVariables": {}
+				},
+				{
+					"id": "1c7fc94a-6876-4f76-bd6e-872faf68e809",
+					"uid": "0-1c7fc94a-6876-4f76-bd6e-872faf68e809",
+					"name": "Single site by it's ID",
+					"url": "{{host}}/sites/2",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "6bbf2c68-b431-4308-95fa-953bd3bc8c78",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"pathVariables": {}
+				},
+				{
+					"id": "42aff421-797b-4adb-bf86-e15c5339ba75",
+					"uid": "0-42aff421-797b-4adb-bf86-e15c5339ba75",
+					"name": "Delete site",
+					"url": "{{host}}/sites/1",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "DELETE",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "6bbf2c68-b431-4308-95fa-953bd3bc8c78",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"pathVariables": {}
+				},
+				{
+					"id": "568f13f8-2edd-4761-b76b-bc1e966e676d",
+					"uid": "0-568f13f8-2edd-4761-b76b-bc1e966e676d",
+					"name": "Add a site",
+					"url": "{{host}}/sites",
+					"description": null,
+					"data": [],
+					"dataOptions": {
+						"raw": {
+							"language": "json"
+						}
+					},
+					"dataMode": "raw",
+					"headerData": null,
+					"method": "POST",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "6bbf2c68-b431-4308-95fa-953bd3bc8c78",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"rawModeData": "{\r\n    \"areaId\": 3,\r\n    \"name\": \"New site A\",\r\n    \"description\": \"Site A's description goes here\",\r\n    \"priceAdult\": 0.00,\r\n    \"priceChild\": 0.00\r\n}",
+					"pathVariables": {}
+				},
+				{
+					"id": "6363756f-e3e1-4e07-a8db-81e32cafaf0a",
+					"uid": "0-6363756f-e3e1-4e07-a8db-81e32cafaf0a",
+					"name": "List of sites",
+					"url": "{{host}}/sites",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "6bbf2c68-b431-4308-95fa-953bd3bc8c78",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"pathVariables": {}
+				},
+				{
+					"id": "798922e5-f93a-4116-a781-16cefaa38e26",
+					"uid": "0-798922e5-f93a-4116-a781-16cefaa38e26",
+					"name": "List areas (regions)",
+					"url": "{{host}}/areas",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "0406fd33-4124-405d-a17a-e1c1473f781c",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"pathVariables": {}
+				},
+				{
+					"id": "ad8b99a4-5308-4c64-b571-8c0c0226d020",
+					"uid": "0-ad8b99a4-5308-4c64-b571-8c0c0226d020",
+					"name": "Get sites by region",
+					"url": "{{host}}/areas/1/sites",
+					"description": null,
+					"data": null,
+					"dataOptions": null,
+					"dataMode": null,
+					"headerData": null,
+					"method": "GET",
+					"pathVariableData": [],
+					"queryParams": [],
+					"auth": null,
+					"events": null,
+					"folder": "0406fd33-4124-405d-a17a-e1c1473f781c",
+					"responses_order": [],
+					"currentHelper": null,
+					"helperAttributes": null,
+					"collectionId": "2ca33377-3c81-44a0-8853-c83586093491",
+					"pathVariables": {}
+				}
+			]
+		}
+	],
+	"environments": [
+		{
+			"id": "7fc1b68b-9a0d-4735-b15a-1d206cd1bb4d",
+			"name": "gb-assignment01",
+			"values": [
+				{
+					"key": "host",
+					"value": "http://localhost:3000/api/v1",
+					"type": "default",
+					"enabled": true
+				}
+			]
+		},
+		{
+			"id": "ef78520e-926f-44e3-b2c4-3ab341cca0c4",
+			"name": "Fastify Prisma Tutorial",
+			"values": [
+				{
+					"key": "host",
+					"value": "http://localhost:3000",
+					"type": "default",
+					"enabled": true
+				},
+				{
+					"key": "name",
+					"value": "",
+					"type": "any",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "any",
+					"enabled": true
+				},
+				{
+					"key": "email",
+					"value": "",
+					"type": "any",
+					"enabled": true
+				}
+			]
+		},
+		{
+			"id": "37b19ae5-6cc9-42ca-86e1-1958fa1d0321",
+			"name": "My Workspace - globals",
+			"values": []
+		}
+	],
+	"headerPresets": [],
+	"globals": []
+}
