@@ -1,5 +1,4 @@
 import { Type } from "@sinclair/typebox";
-import { FastifyRequest } from "fastify";
 
 // Sites schema
 const Site = {
@@ -18,8 +17,8 @@ const SiteAll = {
     areaId: { type: 'integer' },
     name: { type: 'string' },
     description: { type: 'string' },
-    priceAdult: { type: ['number', 'null'] },
-    priceChild: { type: ['number', 'null'] },
+    priceAdult: { type: 'number' },
+    priceChild: { type: 'number' },
   }
 };
 
@@ -45,8 +44,8 @@ const addSiteOpts = {
         areaId: { type: 'integer' },
         name: { type: 'string' },
         description: { type: 'string' },
-        priceAdult: { type: ['number', 'null'] },
-        priceChild: { type: ['number', 'null'] },
+        priceAdult: { type: 'number' },
+        priceChild: { type: 'number' },
       }
     },
     response: {
@@ -67,14 +66,6 @@ const getSiteByIdOpts = {
     },
   }
 };
-
-
-// export interface SLParams { id: string; }
-export type FastifyRequestWithParams = FastifyRequest<{
-  Params: {
-    id: 'string';
-  };
-}>;
 
 
 export {

@@ -1,32 +1,32 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import Sites from '../data/Sites';
 import { FastifyRequestWithParams, FastifyRequestWithSiteBody } from '../typings/miscTypes';
+import Sites from '../data/Sites';
 let sites = Sites;
 
 
 /**
- * Create a nerew site
+ * Create a new site
  */
 const addSite = async (req: FastifyRequestWithSiteBody, reply: FastifyReply) => {
-  // Validate incoming data
-  // TODO: Validation
-  console.log('BODY:', typeof req.body.name);
 
+  // TODO: Validate incoming data
+
+  // Get new site data
   let { areaId, name, description, priceAdult, priceChild } = req.body;
-  let area_id = parseInt(areaId);
-  let price_Adult = 0.00;
-  let price_Child = 0.00;
+  let area_id = parseInt(areaId); // Need to coerce number to integer
 
   // Get next id
-  const id = ++sites.length;
+  const id = sites.length + 1;
 
   // Add data to sites array
+  // TODO: This should really be in the sitesModel?
   try {
-    sites.push({ id, areaId: area_id, name, description, priceAdult: price_Adult, priceChild: price_Child });
-    reply.code(201).send('Site created OK');
+    sites.push({ id, areaId: area_id, name, description, priceAdult, priceChild });
   } catch (err) {
     return reply.status(500).send(new Error('Site was not added'));
   }
+
+  return reply.code(201).send('Site created OK');
 };
 
 
@@ -67,7 +67,7 @@ const deleteSite = async (req: FastifyRequestWithParams, reply: FastifyReply) =>
     return site.id !== +id;
   });
   sites = filteredSites;
-  reply.code(403).send({ todo: 'Implement delete site', id: id, filtered: sites });
+  reply.code(403).send({ message: 'Site deleted OK' });
 };
 
 

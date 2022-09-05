@@ -13,8 +13,8 @@ export type FastifyRequestWithSiteBody = FastifyRequest<{
     areaId: 'integer',
     name: 'string',
     description: 'string',
-    priceAdult: ['number', 'null'],
-    priceChild: ['number', 'null'],
+    priceAdult: 'number',
+    priceChild: 'number',
   };
 }>;
 
@@ -24,6 +24,6 @@ export interface ISite {
   areaId: number,
   name: string,
   description: string,
-  priceAdult?: number,
-  priceChild?: number,
+  priceAdult?: number | string,
+  priceChild?: number | string,
 }
