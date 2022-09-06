@@ -13,6 +13,21 @@ import sitesRoutes from "./routes/sitesRoutes";
  */
 const app = Fastify({ logger: true }).withTypeProvider<TypeBoxTypeProvider>();
 const PORT: number = parseInt(process.env.APP_PORT as string) || 3000;
+
+/**
+ * Plugins
+ */
+app.register(require('@fastify/swagger'), {
+  exposeRoute: true,
+  routePrefix: '/docs',
+  swagger: {
+    info: { title: 'GB-Assignment01-API' },
+    host: 'localhost:3000',
+    schemes: ['http'],
+    consumes: ['application/json'],
+    produces: ['application/json'],
+  }
+});
 // app.register(db);
 
 /**
