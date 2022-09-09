@@ -1,6 +1,6 @@
 import { FastifyInstance } from 'fastify';
 import { addSite, getSites, getSiteById, deleteSite } from '../controllers/sitesController';
-import { addSiteOpts, getSitesOpts, getSiteByIdOpts } from '../models/siteModel';
+import { addSiteOpts, getSitesOpts, getSiteByIdOpts } from '../schemas/sitesSchemas';
 
 
 export default function sitesRoutes(app: FastifyInstance, opts: Object, done: Function) {

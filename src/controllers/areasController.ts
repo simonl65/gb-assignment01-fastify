@@ -1,7 +1,7 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { FastifyRequestWithParams, ISite } from '../typings/miscTypes';
-import Areas from '../data/Areas';
-import Sites from '../data/Sites';
+import Areas from '../models/Areas';
+import Sites from '../models/Sites';
 
 let areas = Areas;
 let sites = Sites;
