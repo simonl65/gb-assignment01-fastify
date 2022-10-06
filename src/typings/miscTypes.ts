@@ -1,14 +1,14 @@
 import { FastifyRequest } from "fastify";
 
 
-export type FastifyRequestWithParams = FastifyRequest<{
+export type FastifyRequestWithIdParam = FastifyRequest<{
   Params: {
     id: 'string';
   };
 }>;
 
 
-export type FastifyRequestWithSiteBody = FastifyRequest<{
+export type SiteType = FastifyRequest<{
   Body: {
     areaId: 'integer',
     name: 'string',

@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { FastifyRequestWithParams, FastifyRequestWithSiteBody } from '../typings/miscTypes';
+import { FastifyRequestWithIdParam, SiteType } from '../typings/miscTypes';
 import Sites from '../models/Sites';
 
 let sites = Sites;
@@ -8,7 +8,7 @@ let sites = Sites;
 /**
  * Create a new site
  */
-const addSite = async (req: FastifyRequestWithSiteBody, reply: FastifyReply) => {
+const addSite = async (req: SiteType, reply: FastifyReply) => {
 
   // TODO: Validate incoming data
 
@@ -42,7 +42,7 @@ const getSites = async (req: FastifyRequest, reply: FastifyReply) => {
 /**
  * Get single site by its ID
  */
-const getSiteById = async (req: FastifyRequestWithParams, reply: FastifyReply) => {
+const getSiteById = async (req: FastifyRequestWithIdParam, reply: FastifyReply) => {
   const id = req.params.id;
   const site = sites.find((site) => {
     if (+(site.id) === +id) {
@@ -62,7 +62,7 @@ const getSiteById = async (req: FastifyRequestWithParams, reply: FastifyReply) =
 /**
  * Delete the specified site
  */
-const deleteSite = async (req: FastifyRequestWithParams, reply: FastifyReply) => {
+const deleteSite = async (req: FastifyRequestWithIdParam, reply: FastifyReply) => {
   const { id } = req.params;
   const filteredSites = sites.filter((site) => {
     return site.id !== +id;

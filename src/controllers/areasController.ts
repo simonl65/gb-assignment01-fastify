@@ -1,5 +1,5 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
-import { FastifyRequestWithParams, ISite } from '../typings/miscTypes';
+import { FastifyRequestWithIdParam, ISite } from '../typings/miscTypes';
 import Areas from '../models/Areas';
 import Sites from '../models/Sites';
 
@@ -18,7 +18,7 @@ const getAreas = async (req: FastifyRequest, reply: FastifyReply) => {
 /**
  * Get single area by its ID
  */
-const getAreaById = async (req: FastifyRequestWithParams, reply: FastifyReply) => {
+const getAreaById = async (req: FastifyRequestWithIdParam, reply: FastifyReply) => {
   const id = req.params.id;
   const area = areas.find((area) => {
     if (+(area.id) === +id) {
@@ -39,7 +39,7 @@ const getAreaById = async (req: FastifyRequestWithParams, reply: FastifyReply) =
  * Get sites in specified area
  * NOTE: This is horribly inefficient because I'm not using a database ;-)
  */
-const getSitesByAreaId = async (req: FastifyRequestWithParams, reply: FastifyReply) => {
+const getSitesByAreaId = async (req: FastifyRequestWithIdParam, reply: FastifyReply) => {
   const areaId = req.params.id;
   let sitesInArea: ISite[] = [];
 
